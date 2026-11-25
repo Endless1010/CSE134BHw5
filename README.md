@@ -1,8 +1,8 @@
 | Field | Value |
 | --- | --- |
 | Repository URL | https://github.com/Endless1010/CSE134BHw5 |
-| Deployed URL | https://endless1010.github.io/CSE134BHw5/ |
-| Component page | https://endless1010.github.io/CSE134BHw5/ (home page) |
+| Deployed URL | https://cse134bhw5bowen.netlify.app/ |
+| Component page | https://cse134bhw5bowen.netlify.app/ (home page) |
 
 # CSE 134B HW5: Bowen Wu
 
