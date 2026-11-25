@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="js/theme.js"></script>
   <script src="js/hello-world.js" defer></script>
+  <script src="js/cat-fact-panel.js" defer></script>
+  <script src="js/cat-fact-controls.js" defer></script>
 </head>
 <body>
   <header>
@@ -67,6 +69,16 @@
       </article>
 
       <p><a href="projects.html">All projects and coursework</a></p>
+    </section>
+
+    <section aria-labelledby="cat-heading">
+      <h2 id="cat-heading">Cat fact of the moment</h2>
+      <p>A small Web Component that fetches a random fact from the Cat Facts API.</p>
+      <noscript>
+        <p>Enable JavaScript to load live data for this widget.</p>
+      </noscript>
+      <cat-fact-panel></cat-fact-panel>
+      <p><button type="button" id="cat-fact-mode-toggle" hidden>Hide details</button></p>
     </section>
 
     <section aria-labelledby="about-heading">

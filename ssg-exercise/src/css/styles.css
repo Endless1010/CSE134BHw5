@@ -1,0 +1,583 @@
+/* Bowen Wu portfolio, shared stylesheet
+   Repository: https://github.com/Endless1010/CSE134BHw3 */
+
+:root {
+  --color-text: #1f2430;
+  --color-muted: #566074;
+  --color-bg: #fbfaf7;
+  --color-surface: #ffffff;
+  --color-accent: #1f4fd1;
+  --color-accent-dark: #163a99;
+  --color-border: #d9dce3;
+  --color-invalid: #b00020;
+  --color-valid: #1b6e2f;
+  --color-warning: #8a4b00;
+  --font-body: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --layout-width: 60rem;
+  --space: 1rem;
+  --radius: 0.5rem;
+}
+
+/* Dark theme: theme.js sets data-theme="dark" on <html>. Without JavaScript the
+   light values above always apply. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-text: #e8eaf0;
+  --color-muted: #aab2c5;
+  --color-bg: #12151c;
+  --color-surface: #1b2030;
+  --color-accent: #8fb0ff;
+  --color-accent-dark: #b8ccff;
+  --color-border: #3a4258;
+  --color-invalid: #ff8a9a;
+  --color-valid: #6fd38b;
+  --color-warning: #ffb454;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  margin: 2rem 0 0.5rem;
+}
+
+h1 { font-size: 2.5rem; margin-top: 0; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+p, ul, ol, dl { margin: 0 0 var(--space); }
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+  text-decoration-thickness: 0.15em;
+}
+
+img, iframe, video, canvas, svg {
+  max-width: 100%;
+}
+
+img, video, svg {
+  height: auto;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+body > header,
+body > footer {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  border-style: solid;
+  border-width: 0 0 1px;
+  padding: var(--space) max(1.5rem, calc((100% - var(--layout-width)) / 2 + 1.5rem));
+}
+
+body > footer {
+  border-width: 1px 0 0;
+  margin-top: 3rem;
+  color: var(--color-muted);
+}
+
+body > header > p {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+}
+
+body > header > p a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+main {
+  max-width: var(--layout-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 0;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  display: block;
+  padding: 0.4em 0.8em;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: var(--color-border);
+}
+
+/* Attribute selector: targets the nav link for the page being viewed */
+nav a[aria-current="page"] {
+  background: var(--color-accent);
+  color: var(--color-surface);
+  font-weight: 600;
+}
+
+/* Attribute selector: targets links to PDF files */
+a[type="application/pdf"] {
+  font-weight: 600;
+}
+
+footer nav a {
+  padding: 0.25em 0.6em;
+  font-size: 0.9375rem;
+}
+
+/* Descendant combinator: targets the small copyright text anywhere inside a footer */
+footer small {
+  color: var(--color-muted);
+}
+
+/* Adjacent sibling combinator: targets the paragraph directly after an h1 */
+h1 + p {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+}
+
+/* Child combinator: targets only sections that are direct children of main */
+main > section {
+  margin-top: 2.5rem;
+}
+
+main > section > h2:first-child {
+  margin-top: 0;
+}
+
+main > section:has(> article) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space);
+}
+
+main > section:has(> article) > :not(article) {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+main > section:has(> article) > article {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space) 1.25rem;
+}
+
+article > h3:first-child {
+  margin-top: 0;
+}
+
+/* Subsequent sibling combinator: targets paragraphs that follow an h3 inside an article */
+article h3 ~ p:last-of-type {
+  margin-bottom: 0;
+}
+
+main > article > header p {
+  font-size: 1.125rem;
+  color: var(--color-muted);
+}
+
+picture img {
+  display: block;
+  border-radius: var(--radius);
+  margin-bottom: var(--space);
+}
+
+tech-stack {
+  display: block;
+  margin: 0.75em 0;
+}
+
+tech-stack > span {
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  border-radius: 999px;
+  color: var(--color-accent-dark);
+  padding: 0.1em 0.7em;
+  margin: 0.15em 0.25em 0.15em 0;
+  font-size: 0.875rem;
+}
+
+main > nav[aria-label="Breadcrumb"] p {
+  margin: 0 0 1.5rem;
+  color: var(--color-muted);
+}
+
+main > nav[aria-label="More projects"] {
+  margin-top: 3rem;
+  padding-top: var(--space);
+  border-top: 1px solid var(--color-border);
+}
+
+main > nav[aria-label="More projects"] ul {
+  justify-content: space-between;
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin: 0 0 var(--space);
+  padding: 0.5rem 1.25rem 1rem;
+  background: var(--color-surface);
+}
+
+legend {
+  font-weight: 600;
+  padding: 0 0.5rem;
+}
+
+fieldset > div + div {
+  margin-top: var(--space);
+}
+
+label {
+  font-weight: 600;
+}
+
+input, textarea, button {
+  font: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 32rem;
+  margin-top: 0.25rem;
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: inherit;
+}
+
+button {
+  padding: 0.6em 1.2em;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-surface);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--color-accent-dark);
+}
+
+/* Contact form (form-no-js.html): Flexbox stacks each label above its control */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+  max-width: 32rem;
+}
+
+.contact-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  margin-top: 0;
+  max-width: none;
+}
+
+.contact-form > p {
+  margin: 0;
+}
+
+/* Validation states (form-no-js.html). Border width never changes, and each
+   status line reserves its height, so nothing shifts when a state appears.
+   :user-invalid / :user-valid only match after the user has interacted. */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  border-width: 2px;
+}
+
+.contact-form .status {
+  min-height: 1.6em;
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+.contact-form .status span {
+  display: none;
+}
+
+.contact-form :user-invalid {
+  border-color: var(--color-invalid);
+  border-style: dashed;
+}
+
+.contact-form :user-valid {
+  border-color: var(--color-valid);
+}
+
+.contact-form > div:has(:user-invalid) .status-invalid,
+.contact-form > div:has(:user-valid) .status-valid {
+  display: inline;
+  font-weight: 600;
+}
+
+.contact-form > div:has(:user-invalid) .status-invalid {
+  color: var(--color-invalid);
+}
+
+.contact-form > div:has(:user-valid) .status-valid {
+  color: var(--color-valid);
+}
+
+.contact-form > div:has(:user-invalid) .status-invalid::before {
+  content: "\2716\00a0";
+}
+
+.contact-form > div:has(:user-valid) .status-valid::before {
+  content: "\2714\00a0";
+}
+
+/* JavaScript-enhanced form (form-with-js.html). The "js" class is added by form.js. */
+.js .contact-form .status {
+  display: none;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.messages[hidden],
+.messages [hidden] {
+  display: none;
+}
+
+.error-area {
+  min-height: 3.5rem;
+}
+
+.error-area h2 {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-invalid);
+}
+
+.error-area h2::before {
+  content: "\2716\00a0";
+}
+
+.error-area ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--color-invalid);
+  font-weight: 600;
+}
+
+.info-area {
+  min-height: 3.5rem;
+}
+
+.info-area p {
+  margin: 0;
+  font-size: 0.9375rem;
+}
+
+#length-warning {
+  min-height: 1.6em;
+}
+
+#length-warning.is-warning {
+  color: var(--color-warning);
+  font-weight: 600;
+}
+
+#length-warning.is-warning::before {
+  content: "\26A0\00a0";
+}
+
+#length-warning.is-limit {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+#length-warning.is-limit::before {
+  content: "\26D4\00a0";
+}
+
+dialog {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  max-width: 24rem;
+  padding: 1.5rem;
+}
+
+iframe {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+summary:focus,
+audio:focus,
+video:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+nav a[aria-current="page"]:focus,
+button:focus {
+  outline-color: var(--color-text);
+}
+
+@media (max-width: 40rem) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+
+  body > header,
+  body > footer {
+    padding-inline: var(--space);
+  }
+
+  main {
+    padding-inline: var(--space);
+  }
+
+  body > header nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  body > header nav a {
+    padding: 0.7em 0.8em;
+    border: 1px solid var(--color-border);
+  }
+
+  main > nav[aria-label="More projects"] ul {
+    flex-direction: column;
+  }
+}
+
+/* Theme switch (added by theme.js) */
+#theme-toggle {
+  margin-top: 0.5rem;
+}
+
+/* View transitions: cross-document navigation uses the browser's default
+   cross-fade, and theme.js uses a same-document transition for the theme switch.
+   Both are skipped when the user asks for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* <cat-fact-panel> Web Component (js/cat-fact-panel.js).
+   The page passes site colors in through custom properties; the component's
+   rules below each supply a fallback. Both themes work because the site
+   variables change with data-theme. */
+cat-fact-panel {
+  --panel-background: var(--color-surface, #ffffff);
+  --panel-text: var(--color-text, #1f2430);
+  --panel-border: var(--color-border, #d9dce3);
+  --panel-accent: var(--color-accent, #1f4fd1);
+  --panel-muted: var(--color-muted, #566074);
+  --panel-error: var(--color-invalid, #b00020);
+  --panel-success: var(--color-valid, #1b6e2f);
+}
+
+cat-fact-panel {
+  display: block;
+  max-width: 32rem;
+  margin-bottom: var(--space);
+  padding: 1rem 1.25rem;
+  background: var(--panel-background, #ffffff);
+  color: var(--panel-text, #1f2430);
+  border: 1px solid var(--panel-border, #d9dce3);
+  border-radius: var(--radius);
+}
+
+cat-fact-panel h3 {
+  margin-top: 0;
+}
+
+cat-fact-panel .cat-fact-text {
+  font-size: 1.125rem;
+}
+
+cat-fact-panel .cat-fact-details,
+cat-fact-panel .cat-fact-status {
+  color: var(--panel-muted, #566074);
+  font-size: 0.9rem;
+}
+
+/* hidden is overridden by display rules, so restate it for the compact mode */
+cat-fact-panel [hidden] {
+  display: none;
+}
+
+cat-fact-panel button {
+  background: var(--panel-accent, #1f4fd1);
+  color: var(--panel-background, #ffffff);
+}
+
+cat-fact-panel button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+cat-fact-panel .cat-fact-status {
+  margin: 0.75rem 0 0;
+}
+
+cat-fact-panel .cat-fact-status[data-state="error"] {
+  color: var(--panel-error, #b00020);
+  font-weight: 600;
+}
+
+cat-fact-panel .cat-fact-status[data-state="success"] {
+  color: var(--panel-success, #1b6e2f);
+}

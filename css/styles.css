@@ -514,3 +514,70 @@ button:focus {
     animation: none !important;
   }
 }
+
+/* <cat-fact-panel> Web Component (js/cat-fact-panel.js).
+   The page passes site colors in through custom properties; the component's
+   rules below each supply a fallback. Both themes work because the site
+   variables change with data-theme. */
+cat-fact-panel {
+  --panel-background: var(--color-surface, #ffffff);
+  --panel-text: var(--color-text, #1f2430);
+  --panel-border: var(--color-border, #d9dce3);
+  --panel-accent: var(--color-accent, #1f4fd1);
+  --panel-muted: var(--color-muted, #566074);
+  --panel-error: var(--color-invalid, #b00020);
+  --panel-success: var(--color-valid, #1b6e2f);
+}
+
+cat-fact-panel {
+  display: block;
+  max-width: 32rem;
+  margin-bottom: var(--space);
+  padding: 1rem 1.25rem;
+  background: var(--panel-background, #ffffff);
+  color: var(--panel-text, #1f2430);
+  border: 1px solid var(--panel-border, #d9dce3);
+  border-radius: var(--radius);
+}
+
+cat-fact-panel h3 {
+  margin-top: 0;
+}
+
+cat-fact-panel .cat-fact-text {
+  font-size: 1.125rem;
+}
+
+cat-fact-panel .cat-fact-details,
+cat-fact-panel .cat-fact-status {
+  color: var(--panel-muted, #566074);
+  font-size: 0.9rem;
+}
+
+/* hidden is overridden by display rules, so restate it for the compact mode */
+cat-fact-panel [hidden] {
+  display: none;
+}
+
+cat-fact-panel button {
+  background: var(--panel-accent, #1f4fd1);
+  color: var(--panel-background, #ffffff);
+}
+
+cat-fact-panel button:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+cat-fact-panel .cat-fact-status {
+  margin: 0.75rem 0 0;
+}
+
+cat-fact-panel .cat-fact-status[data-state="error"] {
+  color: var(--panel-error, #b00020);
+  font-weight: 600;
+}
+
+cat-fact-panel .cat-fact-status[data-state="success"] {
+  color: var(--panel-success, #1b6e2f);
+}
