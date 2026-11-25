@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact form for Bowen Wu that works with HTML alone, no JavaScript.">
+  <meta name="author" content="Bowen Wu">
+  <title>Contact Form (No JavaScript) | Bowen Wu</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <p><a href="index.html"><strong>Bowen Wu</strong></a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="form-no-js.html" aria-current="page">Form (no JS)</a></li>
+        <li><a href="form-with-js.html">Form (with JS)</a></li>
+        <li><a href="resume.pdf" type="application/pdf">Résumé</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact Form (No JavaScript)</h1>
+    <p>This form uses only native HTML. It submits to a testing service that echoes back what you send, so please use sample contact information.</p>
+
+    <p>Fields marked <strong>(required)</strong> must be filled in. The browser checks them when you press Send message.</p>
+
+    <form class="contact-form" action="https://httpbin.org/post" method="post">
+      <div>
+        <label for="name">Name (required)</label>
+        <small id="name-hint">1 to 100 characters. Any name is welcome, including apostrophes and hyphens.</small>
+        <input type="text" id="name" name="name" autocomplete="name" required minlength="1" maxlength="100" aria-describedby="name-hint">
+        <p class="status">
+          <span class="status-invalid">Problem: enter your name, up to 100 characters.</span>
+          <span class="status-valid">Looks good.</span>
+        </p>
+      </div>
+      <div>
+        <label for="email">Email (required)</label>
+        <small id="email-hint">Use the format name@example.com.</small>
+        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-hint">
+        <p class="status">
+          <span class="status-invalid">Problem: enter an email address like name@example.com.</span>
+          <span class="status-valid">Looks good.</span>
+        </p>
+      </div>
+      <div>
+        <label for="comments">Comments (required)</label>
+        <small id="comments-hint">10 to 1,000 characters, so there is enough detail to reply to.</small>
+        <textarea id="comments" name="comments" rows="6" required minlength="10" maxlength="1000" aria-describedby="comments-hint"></textarea>
+        <p class="status">
+          <span class="status-invalid">Problem: write between 10 and 1,000 characters.</span>
+          <span class="status-valid">Looks good.</span>
+        </p>
+      </div>
+      <input type="hidden" name="possible_bot" value="true">
+      <p><button type="submit">Send message</button></p>
+    </form>
+  </main>
+
+  <footer>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="https://github.com/Endless1010">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/bowen-wu-8054b82b9/">LinkedIn</a></li>
+        <li><a href="contact.html">Email me</a></li>
+        <li><a href="experiments.html">HTML experiments</a></li>
+      </ul>
+    </nav>
+    <p><small>&copy; 2026 Bowen Wu. Built with semantic HTML for CSE 134B.</small></p>
+  </footer>
+</body>
+</html>
